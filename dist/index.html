@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acta de reunión · Tránsito de Sabanera</title>
+    <meta
+      name="description"
+      content="Acta ejecutiva de la reunión entre Solvers y Tránsito de Sabanera, con temas clave, observaciones estratégicas y próximos pasos."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #060606;
+        --bg-soft: #101010;
+        --panel: rgba(255, 255, 255, 0.05);
+        --panel-strong: rgba(255, 255, 255, 0.08);
+        --line: rgba(255, 255, 255, 0.1);
+        --text: #f7f7f7;
+        --muted: rgba(255, 255, 255, 0.72);
+        --soft: rgba(255, 255, 255, 0.55);
+        --accent: #7c5cff;
+        --accent-soft: rgba(124, 92, 255, 0.14);
+        --radius-xl: 34px;
+        --radius-lg: 24px;
+        --radius-md: 18px;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      }
+
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        background:
+          radial-gradient(circle at 8% 10%, rgba(124, 92, 255, 0.22), transparent 24%),
+          radial-gradient(circle at 90% 14%, rgba(124, 92, 255, 0.1), transparent 18%),
+          linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+        color: var(--text);
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        line-height: 1.55;
+        overflow-x: hidden;
+      }
+
+      a { color: inherit; text-decoration: none; }
+
+      .page {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 28px 22px 96px;
+        position: relative;
+      }
+
+      .topbar,
+      .hero,
+      .section,
+      .footer { position: relative; z-index: 1; }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+
+      .brand {
+        font-size: 14px;
+        letter-spacing: 0.42em;
+        text-transform: uppercase;
+        color: var(--soft);
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .hero {
+        overflow: hidden;
+        padding: 36px;
+        border-radius: 40px;
+        background:
+          radial-gradient(circle at 15% 18%, rgba(124, 92, 255, 0.22), transparent 24%),
+          linear-gradient(140deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: #d9d0ff;
+        border: 1px solid rgba(124, 92, 255, 0.24);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 12px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 0.95fr;
+        gap: 28px;
+        align-items: start;
+        margin-top: 24px;
+      }
+
+      h1,h2,h3,p { margin: 0; }
+
+      h1 {
+        margin-top: 18px;
+        font-size: clamp(2.8rem, 6.4vw, 5.5rem);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+        max-width: 760px;
+      }
+
+      .hero-copy {
+        margin-top: 18px;
+        max-width: 720px;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .meta-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .meta-card, .panel {
+        padding: 20px;
+        border-radius: var(--radius-lg);
+        background: var(--panel);
+        border: 1px solid var(--line);
+        backdrop-filter: blur(10px);
+      }
+
+      .meta-label {
+        display: block;
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--soft);
+        margin-bottom: 8px;
+      }
+
+      .meta-value {
+        font-size: 1.05rem;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .summary-box {
+        margin-top: 18px;
+        padding: 22px;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(135deg, rgba(124,92,255,0.16), rgba(255,255,255,0.03));
+        border: 1px solid rgba(124, 92, 255, 0.22);
+      }
+
+      .summary-box p {
+        color: var(--muted);
+      }
+
+      .sections {
+        display: grid;
+        gap: 18px;
+        margin-top: 26px;
+      }
+
+      .section {
+        padding: 28px;
+        border-radius: 28px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid var(--line);
+      }
+
+      .section h2 {
+        font-size: clamp(1.4rem, 2vw, 1.9rem);
+        margin-bottom: 12px;
+        letter-spacing: -0.03em;
+      }
+
+      .section p {
+        color: var(--muted);
+      }
+
+      .bullets {
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 12px;
+      }
+
+      .bullets li {
+        position: relative;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+
+      .bullets li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.66em;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 6px rgba(124, 92, 255, 0.14);
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .callout {
+        padding: 24px;
+        border-radius: 28px;
+        background: linear-gradient(135deg, rgba(124,92,255,0.18), rgba(255,255,255,0.03));
+        border: 1px solid rgba(124, 92, 255, 0.22);
+      }
+
+      .callout h3 {
+        font-size: 1.15rem;
+        margin-bottom: 10px;
+      }
+
+      .steps {
+        counter-reset: step;
+        display: grid;
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .step {
+        padding: 18px 18px 18px 64px;
+        position: relative;
+        border-radius: 20px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+      }
+
+      .step::before {
+        counter-increment: step;
+        content: counter(step);
+        position: absolute;
+        left: 18px;
+        top: 18px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--accent);
+        color: white;
+        font-weight: 700;
+      }
+
+      .footer {
+        margin-top: 28px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        color: var(--soft);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 920px) {
+        .hero-grid,
+        .two-col,
+        .meta-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero,
+        .section,
+        .callout { padding: 24px; }
+      }
+
+      @media (max-width: 640px) {
+        .page { padding: 18px 14px 72px; }
+        .topbar { flex-direction: column; align-items: flex-start; }
+        h1 { font-size: 2.6rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <div class="brand">S O L V E R S</div>
+        <div class="tag">Acta ejecutiva · 16 abril 2026</div>
+      </header>
+
+      <section class="hero">
+        <span class="eyebrow">Documento interno · acta de reunión</span>
+        <div class="hero-grid">
+          <div>
+            <h1>Tránsito de Sabanera</h1>
+            <p class="hero-copy">
+              Acta ejecutiva de la reunión sostenida con enfoque en oportunidades tecnológicas,
+              operativas y comerciales. Este documento consolida los temas tratados, la lectura
+              estratégica de cada frente y los próximos pasos recomendados.
+            </p>
+
+            <div class="summary-box">
+              <p>
+                Durante la reunión se identificaron oportunidades claras para fortalecer atención al
+                usuario, recaudo, control operativo, trazabilidad de inventario y soluciones de
+                seguridad, con una visión más integral y conectada a operación real.
+              </p>
+            </div>
+          </div>
+
+          <div class="meta-grid">
+            <div class="meta-card">
+              <span class="meta-label">Fecha de reunión</span>
+              <span class="meta-value">16 de abril de 2026</span>
+            </div>
+            <div class="meta-card">
+              <span class="meta-label">Entidad</span>
+              <span class="meta-value">Tránsito de Sabanera</span>
+            </div>
+            <div class="meta-card">
+              <span class="meta-label">Preparado por</span>
+              <span class="meta-value">Solvers</span>
+            </div>
+            <div class="meta-card">
+              <span class="meta-label">Enfoque</span>
+              <span class="meta-value">Resumen ejecutivo y líneas de acción</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sections">
+        <article class="section">
+          <h2>1. Revisión y fortalecimiento del chatbot</h2>
+          <p>
+            Se planteó la necesidad de evolucionar el chatbot actual para que deje de ser únicamente
+            un canal reactivo de respuesta y se convierta en una herramienta más útil para atención,
+            orientación y generación de oportunidades.
+          </p>
+          <ul class="bullets">
+            <li>Diseñar conversaciones más fluidas y naturales para mejorar la experiencia del usuario.</li>
+            <li>Mantener la capacidad de responder PQR, pero ampliando el alcance del bot.</li>
+            <li>Incorporar información sobre servicios, trámites y preguntas frecuentes.</li>
+            <li>Evaluar una estructura conversacional que también permita capturar leads o interesados cuando aplique.</li>
+            <li>Dejar prevista una futura integración con data interna para entregar respuestas más precisas y contextualizadas.</li>
+          </ul>
+        </article>
+
+        <article class="section">
+          <h2>2. Integración futura con data interna</h2>
+          <p>
+            Se consideró importante que las soluciones conversacionales y operativas que se desarrollen
+            puedan conectarse posteriormente con fuentes internas de información. Esto permitiría que la
+            automatización escale hacia consultas con datos reales, trazabilidad de procesos y soporte
+            operativo más robusto.
+          </p>
+        </article>
+
+        <article class="section">
+          <h2>3. Control de acceso, nómina y seguimiento de rendimiento</h2>
+          <p>
+            Se conversó sobre necesidades asociadas al control de acceso y la posibilidad de fortalecer
+            procesos administrativos relacionados con nómina y rendimiento.
+          </p>
+          <ul class="bullets">
+            <li>Evaluar mecanismos que permitan consolidar información útil para el cálculo de nómina.</li>
+            <li>Revisar cómo visualizar el avance o estado de la nómina durante el periodo correspondiente.</li>
+            <li>Explorar indicadores de rendimiento que ayuden a entender mejor productividad, control operativo y eficiencia administrativa.</li>
+          </ul>
+        </article>
+
+        <article class="section">
+          <h2>4. Estrategia para cobro de cartera de semaforización</h2>
+          <p>
+            Uno de los puntos centrales fue la cartera relacionada con semaforización y la necesidad de
+            diseñar una estrategia de cobro más inteligente y sistemática.
+          </p>
+          <div class="two-col">
+            <div class="panel">
+              <ul class="bullets">
+                <li>Evaluar una estrategia de cobranza apoyada en IA.</li>
+                <li>Considerar automatizaciones mediante mensajes de texto y correo electrónico.</li>
+                <li>Analizar posibles esquemas de descuentos o incentivos para facilitar recuperación de cartera.</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <ul class="bullets">
+                <li>Incorporar análisis financieros que permitan priorizar acciones y medir impacto.</li>
+                <li>Determinar a partir de qué punto la operación de cobro se vuelve rentable.</li>
+                <li>Combinar segmentación, automatización y análisis financiero, no solo comunicación.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="section">
+          <h2>5. Solución Auteco para repuestos e identificación de referencias</h2>
+          <p>
+            Se revisó la situación relacionada con repuestos de Auteco. Actualmente existen varios
+            sistemas y una bodega con alto volumen de referencias, lo que genera complejidad para
+            identificar, organizar y consultar inventario de forma eficiente.
+          </p>
+          <ul class="bullets">
+            <li>Analizar una solución que permita identificar correctamente cada referencia.</li>
+            <li>Revisar cómo unificar o conectar la información que hoy está distribuida en distintos sistemas.</li>
+            <li>Evaluar mecanismos de trazabilidad e identificación para facilitar consulta, control y operación de bodega.</li>
+          </ul>
+        </article>
+
+        <article class="section">
+          <h2>6. Parqueadero de Romero y revisión de cámaras</h2>
+          <p>
+            Se mencionó el caso del parqueadero de Romero y la necesidad de dar continuidad a la
+            conversación sobre infraestructura de cámaras. Como siguiente acción, se propuso
+            comunicarse con Juan Pablo Sierra para comentarle el tema de las cámaras aplicables a
+            parqueadero y restaurantes.
+          </p>
+        </article>
+
+        <section class="callout">
+          <h3>Observación estratégica</h3>
+          <p>
+            Los temas tratados muestran que la necesidad principal no es una herramienta aislada, sino
+            un conjunto de soluciones conectadas a operación real: atención, control, recaudo,
+            inventario y seguridad. Las propuestas futuras deberían presentarse con enfoque integral,
+            priorizando impacto operativo, trazabilidad y retorno económico.
+          </p>
+        </section>
+
+        <article class="section">
+          <h2>Próximos pasos recomendados</h2>
+          <div class="steps">
+            <div class="step">Estructurar una propuesta de evolución del chatbot con enfoque en atención, FAQs, servicios y captura de oportunidades.</div>
+            <div class="step">Definir requerimientos mínimos para futuras integraciones con data interna.</div>
+            <div class="step">Levantar mejor el caso de uso de control de acceso, nómina y seguimiento de rendimiento para delimitar alcance.</div>
+            <div class="step">Diseñar una línea inicial de estrategia de cobro de cartera con automatización y análisis de rentabilidad.</div>
+            <div class="step">Profundizar el caso Auteco para mapear sistemas actuales, referencias e inventario disponible.</div>
+            <div class="step">Contactar a Juan Pablo Sierra para revisar el componente de cámaras para parqueadero y restaurantes.</div>
+          </div>
+        </article>
+      </section>
+
+      <footer class="footer">
+        Solvers · Documento interno de trabajo · Preparado con base en la reunión sostenida el 16 de abril de 2026.
+      </footer>
+    </main>
+  </body>
+</html>
