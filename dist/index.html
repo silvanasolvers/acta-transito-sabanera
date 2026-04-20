@@ -3,468 +3,713 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Acta de reunión · Tránsito de Sabaneta</title>
+    <title>Acta · SETSA</title>
     <meta
       name="description"
-      content="Acta ejecutiva de la reunión entre Solvers y Tránsito de Sabaneta, con temas clave, observaciones estratégicas y próximos pasos."
+      content="Acta ejecutiva de la reunión entre Solvers y SETSA — temas clave, observaciones estratégicas y próximos pasos."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
         color-scheme: dark;
-        --bg: #060606;
-        --bg-soft: #101010;
-        --panel: rgba(255, 255, 255, 0.05);
-        --panel-strong: rgba(255, 255, 255, 0.08);
-        --line: rgba(255, 255, 255, 0.1);
-        --text: #f7f7f7;
-        --muted: rgba(255, 255, 255, 0.72);
-        --soft: rgba(255, 255, 255, 0.55);
+        --bg: #09090b;
+        --bg-soft: #0d0d10;
+        --panel: rgba(255, 255, 255, 0.025);
+        --panel-hover: rgba(255, 255, 255, 0.045);
+        --line: rgba(255, 255, 255, 0.08);
+        --line-strong: rgba(255, 255, 255, 0.14);
+        --text: #fafafa;
+        --muted: rgba(255, 255, 255, 0.62);
+        --soft: rgba(255, 255, 255, 0.42);
         --accent: #7c5cff;
-        --accent-soft: rgba(124, 92, 255, 0.14);
-        --radius-xl: 34px;
-        --radius-lg: 24px;
-        --radius-md: 18px;
-        --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+        --accent-soft: rgba(124, 92, 255, 0.12);
+        --ok: #4ade80;
+        --ok-soft: rgba(74, 222, 128, 0.1);
+        --warn: #facc15;
+        --warn-soft: rgba(250, 204, 21, 0.1);
+        --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
       }
 
       * { box-sizing: border-box; }
+
       html, body {
         margin: 0;
         min-height: 100%;
-        background:
-          radial-gradient(circle at 8% 10%, rgba(124, 92, 255, 0.22), transparent 24%),
-          radial-gradient(circle at 90% 14%, rgba(124, 92, 255, 0.1), transparent 18%),
-          linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+        background: var(--bg);
         color: var(--text);
-        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        scroll-behavior: smooth;
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        -webkit-font-smoothing: antialiased;
       }
 
       body {
-        line-height: 1.55;
+        line-height: 1.5;
         overflow-x: hidden;
+        background-image:
+          radial-gradient(circle at 10% 0%, rgba(124, 92, 255, 0.08), transparent 40%),
+          radial-gradient(circle at 90% 20%, rgba(124, 92, 255, 0.04), transparent 35%);
       }
 
       a { color: inherit; text-decoration: none; }
 
       .page {
-        max-width: 1180px;
+        max-width: 980px;
         margin: 0 auto;
-        padding: 28px 22px 96px;
-        position: relative;
+        padding: 40px 28px 120px;
       }
 
-      .topbar,
-      .hero,
-      .section,
-      .footer { position: relative; z-index: 1; }
-
+      /* ── Topbar ─────────────────────────────────────── */
       .topbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 16px;
-        margin-bottom: 28px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 40px;
       }
 
       .brand {
-        font-size: 14px;
-        letter-spacing: 0.42em;
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 0.3em;
         text-transform: uppercase;
         color: var(--soft);
       }
 
-      .tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 12px 18px;
-        border-radius: 999px;
-        background: rgba(255,255,255,0.06);
-        border: 1px solid var(--line);
-        color: var(--muted);
-        font-size: 0.92rem;
+      .brand-dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        margin-right: 10px;
+        vertical-align: middle;
+        box-shadow: 0 0 12px var(--accent);
       }
 
+      .doc-id {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--soft);
+        letter-spacing: 0.1em;
+      }
+
+      /* ── Hero ───────────────────────────────────────── */
       .hero {
-        overflow: hidden;
-        padding: 36px;
-        border-radius: 40px;
-        background:
-          radial-gradient(circle at 15% 18%, rgba(124, 92, 255, 0.22), transparent 24%),
-          linear-gradient(140deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
-        border: 1px solid var(--line);
-        box-shadow: var(--shadow);
+        margin-bottom: 56px;
       }
 
       .eyebrow {
         display: inline-flex;
-        padding: 8px 14px;
-        border-radius: 999px;
-        background: var(--accent-soft);
-        color: #d9d0ff;
-        border: 1px solid rgba(124, 92, 255, 0.24);
+        align-items: center;
+        gap: 8px;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
-        letter-spacing: 0.14em;
-        font-size: 12px;
+        color: var(--accent);
+        margin-bottom: 20px;
       }
 
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1.25fr 0.95fr;
-        gap: 28px;
-        align-items: start;
-        margin-top: 24px;
+      .eyebrow::before {
+        content: "";
+        width: 24px;
+        height: 1px;
+        background: var(--accent);
       }
-
-      h1,h2,h3,p { margin: 0; }
 
       h1 {
-        margin-top: 18px;
-        font-size: clamp(2.8rem, 6.4vw, 5.5rem);
-        line-height: 0.95;
-        letter-spacing: -0.05em;
-        max-width: 760px;
-      }
-
-      .hero-copy {
-        margin-top: 18px;
-        max-width: 720px;
-        color: var(--muted);
-        font-size: 1.08rem;
-      }
-
-      .meta-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .meta-card, .panel {
-        padding: 20px;
-        border-radius: var(--radius-lg);
-        background: var(--panel);
-        border: 1px solid var(--line);
-        backdrop-filter: blur(10px);
-      }
-
-      .meta-label {
-        display: block;
-        font-size: 0.76rem;
-        text-transform: uppercase;
-        letter-spacing: 0.14em;
-        color: var(--soft);
-        margin-bottom: 8px;
-      }
-
-      .meta-value {
-        font-size: 1.05rem;
-        color: var(--text);
+        margin: 0 0 20px;
+        font-size: clamp(2.4rem, 5.5vw, 4rem);
+        line-height: 1;
+        letter-spacing: -0.04em;
         font-weight: 600;
       }
 
-      .summary-box {
-        margin-top: 18px;
-        padding: 22px;
-        border-radius: var(--radius-lg);
-        background: linear-gradient(135deg, rgba(124,92,255,0.16), rgba(255,255,255,0.03));
-        border: 1px solid rgba(124, 92, 255, 0.22);
-      }
-
-      .summary-box p {
+      h1 .sub {
+        display: block;
         color: var(--muted);
+        font-weight: 400;
+        font-size: 0.5em;
+        letter-spacing: -0.02em;
+        margin-top: 12px;
       }
 
-      .sections {
+      .hero-desc {
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 1rem;
+        margin-bottom: 32px;
+      }
+
+      /* ── Meta grid ──────────────────────────────────── */
+      .meta {
         display: grid;
-        gap: 18px;
-        margin-top: 26px;
-      }
-
-      .section {
-        padding: 28px;
-        border-radius: 28px;
-        background: rgba(255,255,255,0.04);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        background: var(--line);
         border: 1px solid var(--line);
+        border-radius: 12px;
+        overflow: hidden;
       }
 
-      .section h2 {
-        font-size: clamp(1.4rem, 2vw, 1.9rem);
-        margin-bottom: 12px;
-        letter-spacing: -0.03em;
+      .meta-item {
+        padding: 18px 20px;
+        background: var(--bg);
       }
 
-      .section p {
+      .meta-label {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--soft);
+        margin-bottom: 6px;
+      }
+
+      .meta-value {
+        font-size: 0.95rem;
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      /* ── Section headers ───────────────────────────── */
+      .section-head {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        margin: 64px 0 24px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-num {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--accent);
+        letter-spacing: 0.14em;
+      }
+
+      .section-title {
+        font-size: 1.35rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin: 0;
+      }
+
+      .section-desc {
         color: var(--muted);
+        font-size: 0.94rem;
+        margin: 0 0 20px;
+        max-width: 720px;
       }
 
-      .bullets {
-        margin: 18px 0 0;
-        padding: 0;
+      /* ── Checklist ──────────────────────────────────── */
+      .checklist {
         list-style: none;
+        padding: 0;
+        margin: 0;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--panel);
+      }
+
+      .checklist li {
         display: grid;
-        gap: 12px;
+        grid-template-columns: auto 1fr auto;
+        align-items: start;
+        gap: 16px;
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--line);
+        transition: background 0.15s ease;
       }
 
-      .bullets li {
+      .checklist li:last-child { border-bottom: none; }
+
+      .checklist li:hover {
+        background: var(--panel-hover);
+      }
+
+      .check {
+        width: 18px;
+        height: 18px;
+        border-radius: 5px;
+        border: 1.5px solid var(--line-strong);
+        flex-shrink: 0;
+        margin-top: 2px;
         position: relative;
-        padding-left: 18px;
-        color: var(--muted);
+        background: transparent;
       }
 
-      .bullets li::before {
+      .check.done {
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .check.done::after {
         content: "";
         position: absolute;
-        left: 0;
-        top: 0.66em;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--accent);
-        box-shadow: 0 0 0 6px rgba(124, 92, 255, 0.14);
+        left: 4px;
+        top: 1px;
+        width: 5px;
+        height: 9px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
       }
 
+      .check-content {
+        min-width: 0;
+      }
+
+      .check-text {
+        color: var(--text);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .check-note {
+        display: block;
+        margin-top: 4px;
+        color: var(--soft);
+        font-size: 0.82rem;
+        font-family: var(--mono);
+      }
+
+      .tag {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 4px 8px;
+        border-radius: 4px;
+        flex-shrink: 0;
+        margin-top: 2px;
+        white-space: nowrap;
+      }
+
+      .tag.next { background: var(--accent-soft); color: #c9beff; }
+      .tag.eval { background: var(--warn-soft); color: var(--warn); }
+      .tag.live { background: var(--ok-soft); color: var(--ok); }
+
+      /* ── Two col ────────────────────────────────────── */
       .two-col {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
+        gap: 16px;
       }
 
+      .col-label {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--soft);
+        margin-bottom: 12px;
+        padding-left: 20px;
+      }
+
+      /* ── Callout ────────────────────────────────────── */
       .callout {
-        padding: 24px;
-        border-radius: 28px;
-        background: linear-gradient(135deg, rgba(124,92,255,0.18), rgba(255,255,255,0.03));
-        border: 1px solid rgba(124, 92, 255, 0.22);
+        margin-top: 64px;
+        padding: 28px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, rgba(124, 92, 255, 0.08), rgba(255, 255, 255, 0.02));
+        border: 1px solid rgba(124, 92, 255, 0.18);
+        position: relative;
       }
 
-      .callout h3 {
-        font-size: 1.15rem;
+      .callout::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 20%;
+        bottom: 20%;
+        width: 2px;
+        background: var(--accent);
+        border-radius: 0 2px 2px 0;
+      }
+
+      .callout-label {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
         margin-bottom: 10px;
       }
 
-      .steps {
-        counter-reset: step;
-        display: grid;
-        gap: 16px;
-        margin-top: 18px;
-      }
-
-      .step {
-        padding: 18px 18px 18px 64px;
-        position: relative;
-        border-radius: 20px;
-        background: var(--panel);
-        border: 1px solid var(--line);
-      }
-
-      .step::before {
-        counter-increment: step;
-        content: counter(step);
-        position: absolute;
-        left: 18px;
-        top: 18px;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        background: var(--accent);
-        color: white;
-        font-weight: 700;
-      }
-
-      .footer {
-        margin-top: 28px;
-        padding-top: 18px;
-        border-top: 1px solid var(--line);
-        color: var(--soft);
+      .callout p {
+        margin: 0;
+        color: var(--muted);
         font-size: 0.95rem;
       }
 
-      @media (max-width: 920px) {
-        .hero-grid,
-        .two-col,
-        .meta-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .hero,
-        .section,
-        .callout { padding: 24px; }
+      /* ── Next steps ─────────────────────────────────── */
+      .steps {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        counter-reset: step;
       }
 
-      @media (max-width: 640px) {
-        .page { padding: 18px 14px 72px; }
-        .topbar { flex-direction: column; align-items: flex-start; }
-        h1 { font-size: 2.6rem; }
+      .steps li {
+        counter-increment: step;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 20px;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .steps li:last-child { border-bottom: none; }
+
+      .steps li::before {
+        content: counter(step, decimal-leading-zero);
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.1em;
+        padding-top: 3px;
+      }
+
+      .step-text {
+        color: var(--text);
+        font-size: 0.95rem;
+      }
+
+      /* ── Footer ─────────────────────────────────────── */
+      .footer {
+        margin-top: 80px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .footer-text {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--soft);
+        letter-spacing: 0.08em;
+      }
+
+      /* ── Responsive ─────────────────────────────────── */
+      @media (max-width: 720px) {
+        .page { padding: 28px 18px 80px; }
+        .meta { grid-template-columns: repeat(2, 1fr); }
+        .two-col { grid-template-columns: 1fr; }
+        .checklist li { grid-template-columns: auto 1fr; }
+        .checklist .tag { grid-column: 2; justify-self: start; margin-top: 4px; }
       }
     </style>
   </head>
   <body>
     <main class="page">
       <header class="topbar">
-        <div class="brand">S O L V E R S</div>
-        <div class="tag">Acta 777 · 16 abril 2026</div>
+        <div class="brand"><span class="brand-dot"></span>SOLVERS</div>
+        <div class="doc-id">ACTA-777 · 2026-04-16</div>
       </header>
 
       <section class="hero">
-        <span class="eyebrow">Documento interno · acta de reunión</span>
-        <div class="hero-grid">
-          <div>
-            <h1>Tránsito de Sabaneta</h1>
-            <p class="hero-copy">
-              Acta ejecutiva de la reunión sostenida con enfoque en oportunidades tecnológicas, operativas y comerciales. Este documento consolida los temas tratados, la lectura estratégica de cada frente y los próximos pasos recomendados.
-            </p>
+        <div class="eyebrow">Documento interno · Acta de reunión</div>
+        <h1>
+          SETSA
+          <span class="sub">Oportunidades tecnológicas y líneas de acción</span>
+        </h1>
+        <p class="hero-desc">
+          Acta ejecutiva de la reunión entre Solvers y SETSA. Consolida los temas tratados, lectura estratégica por frente y próximos pasos recomendados.
+        </p>
 
-            <div class="summary-box">
-              <p>
-                Durante la reunión se identificaron oportunidades claras para fortalecer atención al
-                usuario, recaudo, control operativo, trazabilidad de inventario y soluciones de
-                seguridad, con una visión más integral y conectada a operación real.
-              </p>
-            </div>
+        <div class="meta">
+          <div class="meta-item">
+            <div class="meta-label">Fecha</div>
+            <div class="meta-value">16 Abr 2026</div>
           </div>
-
-          <div class="meta-grid">
-            <div class="meta-card">
-              <span class="meta-label">Fecha de reunión</span>
-              <span class="meta-value">16 de abril de 2026</span>
-            </div>
-            <div class="meta-card">
-              <span class="meta-label">Entidad</span>
-              <span class="meta-value">Tránsito de Sabaneta</span>
-            </div>
-            <div class="meta-card">
-              <span class="meta-label">Preparado por</span>
-              <span class="meta-value">Solvers</span>
-            </div>
-            <div class="meta-card">
-              <span class="meta-label">Enfoque</span>
-              <span class="meta-value">Resumen ejecutivo y líneas de acción</span>
-            </div>
+          <div class="meta-item">
+            <div class="meta-label">Entidad</div>
+            <div class="meta-value">SETSA</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Preparado por</div>
+            <div class="meta-value">Solvers</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Alcance</div>
+            <div class="meta-value">Resumen + acción</div>
           </div>
         </div>
       </section>
 
-      <section class="sections">
-        <article class="section">
-          <h2>1. Revisión y fortalecimiento del chatbot</h2>
-          <p>
-            Se planteó la necesidad de evolucionar el chatbot actual para que deje de ser únicamente
-            un canal reactivo de respuesta y se convierta en una herramienta más útil para atención,
-            orientación y generación de oportunidades.
-          </p>
-          <ul class="bullets">
-            <li>Diseñar conversaciones más fluidas y naturales para mejorar la experiencia del usuario.</li>
-            <li>Mantener la capacidad de responder PQR, pero ampliando el alcance del bot.</li>
-            <li>Incorporar información sobre servicios, trámites y preguntas frecuentes.</li>
-            <li>Evaluar una estructura conversacional que también permita capturar leads o interesados cuando aplique.</li>
-            <li>Dejar prevista una futura integración con data interna para entregar respuestas más precisas y contextualizadas.</li>
-          </ul>
-        </article>
-
-        <article class="section">
-          <h2>2. Integración futura con data interna</h2>
-          <p>
-            Se consideró importante que las soluciones conversacionales y operativas que se desarrollen
-            puedan conectarse posteriormente con fuentes internas de información. Esto permitiría que la
-            automatización escale hacia consultas con datos reales, trazabilidad de procesos y soporte
-            operativo más robusto.
-          </p>
-        </article>
-
-        <article class="section">
-          <h2>3. Control de acceso, nómina y seguimiento de rendimiento</h2>
-          <p>
-            Se conversó sobre necesidades asociadas al control de acceso y la posibilidad de fortalecer
-            procesos administrativos relacionados con nómina y rendimiento.
-          </p>
-          <ul class="bullets">
-            <li>Evaluar mecanismos que permitan consolidar información útil para el cálculo de nómina.</li>
-            <li>Revisar cómo visualizar el avance o estado de la nómina durante el periodo correspondiente.</li>
-            <li>Explorar indicadores de rendimiento que ayuden a entender mejor productividad, control operativo y eficiencia administrativa.</li>
-          </ul>
-        </article>
-
-        <article class="section">
-          <h2>4. Estrategia para cobro de cartera de semaforización</h2>
-          <p>
-            Uno de los puntos centrales fue la cartera relacionada con semaforización y la necesidad de
-            diseñar una estrategia de cobro más inteligente y sistemática.
-          </p>
-          <div class="two-col">
-            <div class="panel">
-              <ul class="bullets">
-                <li>Evaluar una estrategia de cobranza apoyada en IA.</li>
-                <li>Considerar automatizaciones mediante mensajes de texto y correo electrónico.</li>
-                <li>Analizar posibles esquemas de descuentos o incentivos para facilitar recuperación de cartera.</li>
-              </ul>
-            </div>
-            <div class="panel">
-              <ul class="bullets">
-                <li>Incorporar análisis financieros que permitan priorizar acciones y medir impacto.</li>
-                <li>Determinar a partir de qué punto la operación de cobro se vuelve rentable.</li>
-                <li>Combinar segmentación, automatización y análisis financiero, no solo comunicación.</li>
-              </ul>
-            </div>
+      <!-- 01 -->
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Evolución del chatbot</h2>
+      </div>
+      <p class="section-desc">
+        Convertir el chatbot reactivo en una herramienta integral de atención, orientación y generación de oportunidades.
+      </p>
+      <ul class="checklist">
+        <li>
+          <span class="check done"></span>
+          <div class="check-content">
+            <div class="check-text">Conversaciones más fluidas y naturales</div>
+            <span class="check-note">ux · tono conversacional</span>
           </div>
-        </article>
-
-        <article class="section">
-          <h2>5. Solución Auteco para repuestos e identificación de referencias</h2>
-          <p>
-            Se revisó la situación relacionada con repuestos de Auteco. Actualmente existen varios
-            sistemas y una bodega con alto volumen de referencias, lo que genera complejidad para
-            identificar, organizar y consultar inventario de forma eficiente.
-          </p>
-          <ul class="bullets">
-            <li>Analizar una solución que permita identificar correctamente cada referencia.</li>
-            <li>Revisar cómo unificar o conectar la información que hoy está distribuida en distintos sistemas.</li>
-            <li>Evaluar mecanismos de trazabilidad e identificación para facilitar consulta, control y operación de bodega.</li>
-          </ul>
-        </article>
-
-        <article class="section">
-          <h2>6. Parqueadero de Romero y revisión de cámaras</h2>
-          <p>
-            Se mencionó el caso del parqueadero de Romero y la necesidad de dar continuidad a la
-            conversación sobre infraestructura de cámaras. Como siguiente acción, se propuso
-            comunicarse con Juan Pablo Sierra para comentarle el tema de las cámaras aplicables a
-            parqueadero y restaurantes.
-          </p>
-        </article>
-
-        <section class="callout">
-          <h3>Observación estratégica</h3>
-          <p>
-            Los temas tratados muestran que la necesidad principal no es una herramienta aislada, sino
-            un conjunto de soluciones conectadas a operación real: atención, control, recaudo,
-            inventario y seguridad. Las propuestas futuras deberían presentarse con enfoque integral,
-            priorizando impacto operativo, trazabilidad y retorno económico.
-          </p>
-        </section>
-
-        <article class="section">
-          <h2>Próximos pasos recomendados</h2>
-          <div class="steps">
-            <div class="step">Estructurar una propuesta de evolución del chatbot con enfoque en atención, FAQs, servicios y captura de oportunidades.</div>
-            <div class="step">Definir requerimientos mínimos para futuras integraciones con data interna.</div>
-            <div class="step">Levantar mejor el caso de uso de control de acceso, nómina y seguimiento de rendimiento para delimitar alcance.</div>
-            <div class="step">Diseñar una línea inicial de estrategia de cobro de cartera con automatización y análisis de rentabilidad.</div>
-            <div class="step">Profundizar el caso Auteco para mapear sistemas actuales, referencias e inventario disponible.</div>
-            <div class="step">Contactar a Juan Pablo Sierra para revisar el componente de cámaras para parqueadero y restaurantes.</div>
+          <span class="tag live">base</span>
+        </li>
+        <li>
+          <span class="check"></span>
+          <div class="check-content">
+            <div class="check-text">Mantener capacidad de responder PQR ampliando alcance del bot</div>
+            <span class="check-note">scope · pqr + servicios</span>
           </div>
-        </article>
-      </section>
+          <span class="tag next">next</span>
+        </li>
+        <li>
+          <span class="check"></span>
+          <div class="check-content">
+            <div class="check-text">Información sobre servicios, trámites y preguntas frecuentes</div>
+            <span class="check-note">contenido · faqs</span>
+          </div>
+          <span class="tag next">next</span>
+        </li>
+        <li>
+          <span class="check"></span>
+          <div class="check-content">
+            <div class="check-text">Estructura conversacional que capture leads cuando aplique</div>
+            <span class="check-note">captura · lead scoring</span>
+          </div>
+          <span class="tag eval">eval</span>
+        </li>
+        <li>
+          <span class="check"></span>
+          <div class="check-content">
+            <div class="check-text">Integración futura con data interna para respuestas contextualizadas</div>
+            <span class="check-note">roadmap · conexión con core</span>
+          </div>
+          <span class="tag eval">eval</span>
+        </li>
+      </ul>
+
+      <!-- 02 -->
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Integración con data interna</h2>
+      </div>
+      <p class="section-desc">
+        Conectar soluciones conversacionales y operativas a fuentes internas — automatización escalada hacia consultas reales, trazabilidad y soporte robusto.
+      </p>
+      <ul class="checklist">
+        <li>
+          <span class="check"></span>
+          <div class="check-content">
+            <div class="check-text">Mapear fuentes internas candidatas para conexión</div>
+            <span class="check-note">discovery · data sources</span>
+          </div>
+          <span class="tag eval">eval</span>
+        </li>
+        <li>
+          <span class="check"></span>
+          <div class="check-content">
+            <div class="check-text">Definir requerimientos mínimos para futuras integraciones</div>
+            <span class="check-note">spec · api + acceso</span>
+          </div>
+          <span class="tag next">next</span>
+        </li>
+      </ul>
+
+      <!-- 03 -->
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Control de acceso, nómina y rendimiento</h2>
+      </div>
+      <p class="section-desc">
+        Fortalecer procesos administrativos asociados a control de acceso, cálculo de nómina y seguimiento de productividad.
+      </p>
+      <ul class="checklist">
+        <li>
+          <span class="check"></span>
+          <div class="check-content">
+            <div class="check-text">Consolidar información útil para cálculo de nómina</div>
+            <span class="check-note">fuente única · validación</span>
+          </div>
+          <span class="tag next">next</span>
+        </li>
+        <li>
+          <span class="check"></span>
+          <div class="check-content">
+            <div class="check-text">Visualizar avance y estado de nómina durante el periodo</div>
+            <span class="check-note">dashboard · periodo activo</span>
+          </div>
+          <span class="tag eval">eval</span>
+        </li>
+        <li>
+          <span class="check"></span>
+          <div class="check-content">
+            <div class="check-text">Indicadores de rendimiento: productividad, control, eficiencia</div>
+            <span class="check-note">kpis · operación</span>
+          </div>
+          <span class="tag eval">eval</span>
+        </li>
+      </ul>
+
+      <!-- 04 -->
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Estrategia de cobro — cartera de semaforización</h2>
+      </div>
+      <p class="section-desc">
+        Diseñar un enfoque sistemático y medible — combinando segmentación, automatización y análisis financiero, no solo comunicación.
+      </p>
+      <div class="two-col">
+        <div>
+          <div class="col-label">Operación</div>
+          <ul class="checklist">
+            <li>
+              <span class="check"></span>
+              <div class="check-content">
+                <div class="check-text">Estrategia de cobranza apoyada en IA</div>
+                <span class="check-note">segmentación + priorización</span>
+              </div>
+              <span class="tag next">next</span>
+            </li>
+            <li>
+              <span class="check"></span>
+              <div class="check-content">
+                <div class="check-text">Automatización vía SMS y correo electrónico</div>
+                <span class="check-note">canal · multi-touch</span>
+              </div>
+              <span class="tag next">next</span>
+            </li>
+            <li>
+              <span class="check"></span>
+              <div class="check-content">
+                <div class="check-text">Esquemas de descuentos o incentivos para recuperación</div>
+                <span class="check-note">comercial · política</span>
+              </div>
+              <span class="tag eval">eval</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div class="col-label">Análisis</div>
+          <ul class="checklist">
+            <li>
+              <span class="check"></span>
+              <div class="check-content">
+                <div class="check-text">Análisis financieros para priorizar acciones y medir impacto</div>
+                <span class="check-note">modelo · roi por acción</span>
+              </div>
+              <span class="tag next">next</span>
+            </li>
+            <li>
+              <span class="check"></span>
+              <div class="check-content">
+                <div class="check-text">Umbral a partir del cual el cobro se vuelve rentable</div>
+                <span class="check-note">breakeven · cartera</span>
+              </div>
+              <span class="tag eval">eval</span>
+            </li>
+            <li>
+              <span class="check"></span>
+              <div class="check-content">
+                <div class="check-text">Combinar segmentación, automatización y análisis</div>
+                <span class="check-note">framework integral</span>
+              </div>
+              <span class="tag next">next</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Auteco — repuestos e identificación de referencias</h2>
+      </div>
+      <p class="section-desc">
+        Bodega con alto volumen de referencias distribuidas en varios sistemas. Complejidad para identificar, organizar y consultar inventario de forma eficiente.
+      </p>
+      <ul class="checklist">
+        <li>
+          <span class="check"></span>
+          <div class="check-content">
+            <div class="check-text">Solución para identificar correctamente cada referencia</div>
+            <span class="check-note">catálogo maestro</span>
+          </div>
+          <span class="tag next">next</span>
+        </li>
+        <li>
+          <span class="check"></span>
+          <div class="check-content">
+            <div class="check-text">Unificar o conectar información distribuida entre sistemas</div>
+            <span class="check-note">integración · sincronización</span>
+          </div>
+          <span class="tag eval">eval</span>
+        </li>
+        <li>
+          <span class="check"></span>
+          <div class="check-content">
+            <div class="check-text">Mecanismos de trazabilidad para consulta, control y bodega</div>
+            <span class="check-note">inventario · auditoría</span>
+          </div>
+          <span class="tag eval">eval</span>
+        </li>
+      </ul>
+
+      <!-- 06 -->
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <h2 class="section-title">Parqueadero Romero — revisión de cámaras</h2>
+      </div>
+      <p class="section-desc">
+        Dar continuidad a la conversación sobre infraestructura de cámaras aplicables a parqueadero y restaurantes.
+      </p>
+      <ul class="checklist">
+        <li>
+          <span class="check"></span>
+          <div class="check-content">
+            <div class="check-text">Contactar a Juan Pablo Sierra — cámaras para parqueadero y restaurantes</div>
+            <span class="check-note">owner · jp sierra</span>
+          </div>
+          <span class="tag next">next</span>
+        </li>
+      </ul>
+
+      <!-- Observación -->
+      <div class="callout">
+        <div class="callout-label">Observación estratégica</div>
+        <p>
+          La necesidad principal no es una herramienta aislada, sino un conjunto de soluciones conectadas a operación real: atención, control, recaudo, inventario y seguridad. Las propuestas futuras deben presentarse con enfoque integral, priorizando impacto operativo, trazabilidad y retorno económico.
+        </p>
+      </div>
+
+      <!-- Próximos pasos -->
+      <div class="section-head">
+        <span class="section-num">→</span>
+        <h2 class="section-title">Próximos pasos</h2>
+      </div>
+      <ol class="steps">
+        <li><span class="step-text">Estructurar propuesta de evolución del chatbot — atención, FAQs, servicios y captura de oportunidades.</span></li>
+        <li><span class="step-text">Definir requerimientos mínimos para futuras integraciones con data interna.</span></li>
+        <li><span class="step-text">Levantar caso de uso de control de acceso, nómina y seguimiento de rendimiento para delimitar alcance.</span></li>
+        <li><span class="step-text">Diseñar línea inicial de estrategia de cobro con automatización y análisis de rentabilidad.</span></li>
+        <li><span class="step-text">Profundizar caso Auteco — mapear sistemas actuales, referencias e inventario disponible.</span></li>
+        <li><span class="step-text">Contactar a Juan Pablo Sierra — componente de cámaras para parqueadero y restaurantes.</span></li>
+      </ol>
 
       <footer class="footer">
-        Solvers · Documento interno de trabajo · Preparado con base en la reunión sostenida el 16 de abril de 2026.
+        <span class="footer-text">SOLVERS · DOC INTERNO</span>
+        <span class="footer-text">2026-04-16 · ACTA-777</span>
       </footer>
     </main>
   </body>
